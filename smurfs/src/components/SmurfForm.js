@@ -1,8 +1,41 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
 import axios from "axios";
+import styled from "styled-components";
 
 import {addSmurf, ADD_SMURF} from "../actions/addSmurf";
+
+const Form = styled.form`
+    background-color: #fff;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10px;
+    margin: 10px auto;
+    align-item: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 3px solid #224de3;
+    color: red;
+    font-weight: bold;
+
+    input {
+        background-color: rgba(0,0,0,0);
+        border: none;
+        border-bottom: 1px solid red;
+        color: #224de3;
+    }
+
+    button {
+        background-color: red;
+        font-weight: bold;
+        color: white;
+        padding: 10px 30px;
+        margin: auto;
+        border-radius: 8px;
+        border: 1px solid #224de3;
+    }
+`
 
 function SmurfForm(props) {
 
@@ -29,7 +62,7 @@ function SmurfForm(props) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler}>
             <label>Name:
                 <input type="text" name="name" id="name" placeholder="Enter a name..." value={smurf.name} onChange={changeHandler}/>
             </label>
@@ -43,7 +76,7 @@ function SmurfForm(props) {
             </label>
             <br/>
             <button type="submit">Add Smurf</button>
-        </form>
+        </Form>
     )
 }
 
